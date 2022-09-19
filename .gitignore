@@ -1,2 +1,6 @@
 *.pdf
+*.tar.gz
+*.aux
+*.log
+*.out
 .auctex-auto/
