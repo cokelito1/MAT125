@@ -1,0 +1,21 @@
+#+title: Tarea 1
+#+author: Jorge Eduardo Bravo Soto
+#+email: jorge.bravos@usm.cl
+#+LANGUAGE: es
+#+LATEX_CLASS: homework
+
+#+LATEX_HEADER: \usepackage{amssymb, amsmath}
+#+LATEX_HEADER: \usepackage{lastpage}
+#+LATEX_HEADER: \usepackage[AUTO]{babel}
+#+LATEX_HEADER: \usepackage{eulervm}
+#+LATEX_HEADER: \usepackage{concrete}
+#+LATEX_HEADER: \usepackage{tikz-cd}
+#+LATEX_HEADER: \pagenumbering{arabic}
+#+LATEX_HEADER: \usepackage{microtype}
+
+#+OPTIONS: toc:nil
+
+#+LATEX_HEADER: \rol{202103004-2}
+#+LATEX_HEADER: \logo{usm.jpg}
+#+LATEX_HEADER: \ayudante{Agustin Huerta}
+#+LATEX_HEADER: \class{MAT125: Profesor Alexander Quaas}

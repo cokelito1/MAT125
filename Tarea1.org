@@ -1,0 +1,233 @@
+#+title: Tarea 1
+#+author: Jorge Eduardo Bravo Soto
+#+email: jorge.bravos@usm.cl
+#+LANGUAGE: es
+#+LATEX_CLASS: homework
+
+#+LATEX_HEADER: \usepackage{amssymb, amsmath}
+#+LATEX_HEADER: \usepackage{lastpage}
+#+LATEX_HEADER: \usepackage[AUTO]{babel}
+#+LATEX_HEADER: \usepackage{eulervm}
+#+LATEX_HEADER: \usepackage{concrete}
+#+LATEX_HEADER: \usepackage{tikz-cd}
+#+LATEX_HEADER: \usetikzlibrary{babel}
+#+LATEX_HEADER: \pagenumbering{arabic}
+#+LATEX_HEADER: \usepackage{microtype}
+
+#+OPTIONS: toc:nil
+
+#+LATEX_HEADER: \rol{202103004-2}
+#+LATEX_HEADER: \logo{usm.jpg}
+#+LATEX_HEADER: \ayudante{Agustin Huerta}
+#+LATEX_HEADER: \class{MAT125: Profesor Alexander Quaas}
+
+* Sean $X$ e $Y$ conjuntos, Demostrar que $X = Y \iff (X \cap Y^{c}) \cup (X^{c} \cap Y) = \emptyset$ y $(X - Y) \cup (Y - X) = (X \cup Y) - (Y \cap X)$
+\parte
+Sea $X = Y$ entonces
+$(X \inter Y^{c}) \union (X^{c} \inter Y) = (X \inter X^{c}) \union (X^{c} \inter X) = \emptyset \union \emptyset = \emptyset$
+Por lo que queda demostrada la implicancia hacia la derecha.
+
+Para demostrar la implicancia hacia la izquierda ocuparemos demostración por contradicción por lo que asumiremos que
+$X \neq Y$ y que $(X \inter Y^{c}) \cup (X^{c} \cap Y) = \emptyset$. Dado que $X \neq Y$ existe, sin perdida
+de generalidad, algún $y_0 \in Y \land y_0 \notin X$ por tanto dado que $y_0 \notin X \implies y_0 \in X^{c}$
+sabemos que $y_0 \in (X^{c} \cap Y)$ por lo que $(X \cap Y^{c}) \cup (X^{c} \cap Y) \neq \emptyset$
+una contradicción. El caso en el que existe algún $x_0 \in X \land x_0 \notin Y$ es análogo.
+
+\parte
+Ocuparemos solo las definiciones, distributividad de operadores lógicos, Morgan y llegaremos a la igualdad
+\begin{align*}
+&x \in (X - Y) \cup (Y - X)\\
+&\iff  (x \in X \land x \notin Y) \lor (x \in Y \land x \notin X)\\
+&\iff ((x \in X \land x \notin Y) \lor x \in Y) \land ((x \in X \land x \notin Y) \lor x \notin X)\\
+&\iff ((x \in X \lor x \in Y) \land (x \notin Y \lor x \in Y)) \land ((x \in X \lor x \notin X) \land (x \notin Y \lor x \notin X))\\
+&\iff ((x \in X \lor x \in Y) \land T) \land (T \land (x \notin Y \lor x \notin X))\\
+&\iff (x \in X \lor x \in Y) \land (x \notin Y \lor x \notin X)\\
+&\iff x \in (X \cup Y) \land x \in (Y^{c} \cup X^{c})\\
+&\iff x \in (X \cup Y) \land x \in (Y \cap X)^{c}\\
+&\iff x \in (X \cup Y) - (Y \cap X)
+\end{align*}
+
+* Sea $f : A \to B$, sean $X, Y \subset A$, demostrar que $f(X) - f(Y) \subset f(X - Y)$ y $f(X) - f(Y) = f(X - Y)$ si f es inyectiva
+\parte
+\begin{align*}
+    x \in f(X) - f(Y) &\iff x \in f(X) \land x \notin f(Y)\\
+&\iff \exists k \in X, \forall u \in Y, f(k) = x \land  f(u) \neq x\\
+&\implies k \in X \land k \notin Y \implies x \in f(X - Y)
+\end{align*}
+
+\parte
+Sea $f$ inyectiva también
+\begin{align*}
+    &x \in f(X - Y) \iff \exists k \in X - Y, f(k) = x\\
+    &\iff k \in X \land k \notin Y, f(k) = x
+\end{align*}
+
+por la inyectividad sabemos que $k$ es el único valor en el Dominio
+tal que $f(p) = x$ por lo que podemos decir que dado
+que $k \notin Y$, para todo $u$ en $Y$ no se cumple que $f(u) = x$
+\begin{align*}
+    &\implies \forall u \in Y, k \in X, f(k) = x \land f(u) \neq x\\
+    &\iff x \in f(X) \land x \notin f(Y)\\
+    &\iff x \in f(X) - f(Y)
+\end{align*}
+* Demostrar que $f^{-1}(V)$ con $V \subset Y$ no es ambiguo si f es biyectiva
+\parte
+Notemos que dado que $f$ es una biyeccion $f(x) = y \iff x = f^{-1}(y)$
+
+\begin{align*}
+    & x \in PreIm(f(V)) \iff \exists y \in V, f(x) = y\\
+    & \iff y \in V, x = f^{-1}(y)\\
+    \intertext{Por definicion de imagen}
+    & \iff x \in Im(f^{-1}(V))
+\end{align*}
+
+por tanto $x \in PreIm(f(V)) \iff x \in Im(f^{-1}(V))$
+
+* Demostrar ciertas propiedades de la cardinalidad sobre conjuntos finitos
+\parte
+Consideraremos que $x_0 \notin X$ y demostraremos que $|X \cup \{x_0\}| = |X| + 1$.
+Sea $|X| = n$, dado que este es finito existe una biyeccion entre
+$X$ e $I_n$, llamaremos a esta biyeccion $\varphi(x)$
+
+Consideremos la función definida por
+\begin{equation*}
+    f : X \to I_{n+1}
+    \begin{cases}
+        f(x) = \varphi(x) & x \neq x_0\\
+        f(x) = n + 1 & x = x_0
+    \end{cases}
+\end{equation*}
+
+Demostraremos que esto es una biyeccion.
+$f$ es sobreyectiva ya que $f(X) = \varphi(X) = I_n$ y $f(x_0) = n + 1$
+por lo que para cada valor en $I_{n+1}$ existe al menos una imagen.
+
+Ahora demostraremos inyectividad, si $f(x) = f(y)$ y a su vez $f(x) \leq n$
+nos queda que $\varphi(x) = \varphi(y)$ y dado que $\varphi$ es inyectiva nos queda
+$x = y$, en caso de que $f(x) = n + 1$ la única preimagen que tiene es $x_0$
+por lo que $f(x) = f(y) \iff x = x_0 = y$ y queda demostrado la inyectividad.
+
+\parte
+Sea $f(x)$ la biyeccion de $X$ en $I_n$ y $g(x)$ la biyeccion de $Y$ en $I_m$
+Consideremos la siguiente función
+\begin{equation*}
+    h(x) = \begin{cases}
+        f(x) & x \in X\\
+        n + g(x) & x \notin X \land x \in Y
+    \end{cases}
+\end{equation*}
+
+Notemos que para todo $x$ se cumple que
+\begin{equation*}
+    f(x) < n + g(x)
+\end{equation*}
+y por tricotomía tenemos entonces que
+\begin{equation*}
+    f(x) \neq n + g(x)
+\end{equation*}
+
+Demostraremos que $h$ es inyectiva
+\begin{align*}
+    h(x) &= h(y)\\
+    f(x) = f(y) &\lor n + g(x) = n + g(y)\\
+    x = y &\lor g(x) = g(y)\\
+    x = y &\lor x = y\\
+    x &= y
+\end{align*}
+
+por tanto $|X \cup Y| \leq |X| + |Y|$ y a su vez es finito.
+
+Ahora supongamos que $X \cap Y = \emptyset$ entonces demostraremos que $h$ es sobreyectiva.
+dado un $x_0 \in I_{n + m}$ tenemos que si $x_0 \leq n$ entonces existe $x \in X$ tal que $f(x) = x_0$ lo que implica que $h(x) = f(x) = x_0$ dado que $x \in X$.
+ahora si tenemos que $n + 1 \leq x_0 \leq n + m$, sabemos que $x_0 = n + x_1$ tal que $x_1 \in I_m$ entonces existe $x \in Y$ tal que $g(x) = x_1 \iff n + g(x) = x_0 = n + x_1$
+sabemos que ese $x$ existe ya que $g$ es sobreyectiva en $I_m$ y $x_1 \in I_m$, dado que la intersección es vacía $x \notin X$
+por tanto $h(x) = n + x_1 = x_0$, lo que significa que $h$ es sobreyectiva. Por tanto $|X \cup Y| = |X| + |Y|$ si $X \cap Y = \emptyset$
+
+\parte
+Sea $f: X \to I_n$ una biyeccion y $g: Y \to I_m$ otra biyección, notar que si consideramos
+la restricción de $f$ a $X \cap Y$ esta sigue siendo inyectiva, por lo que $|X \cap Y| \leq |X| + |Y|$
+Por tanto es finito.
+
+Ocuparemos un proceso inductivo en el tamaño de $X \cap Y$, notar que para $X \cap Y = \emptyset$ es el problema anterior por lo que el caso base queda listo. si agregamos un elemento $h$ a $X \cap Y$ este
+elemento se encuentra en ambos por tanto esta en la unión, por otro lado tenemos lo siguiente
+
+\begin{equation*}
+    |X \cup Y \cup \{h\}| + |(X \cap Y) \cup \{h\}| = |X \cup Y| + 1 + |X \cap Y| + 1 = |X \cup Y| + |X \cap Y| + 2
+\end{equation*}
+
+Esto es cierto por la parte a de este problema. despues obtenemos por Hipotesis de nuestro proceso inductivo
+\begin{equation*}
+    |X \cup Y| + |X \cap Y| + 2 = |X| + |Y| + 2 = |X| + 1 + |Y| + 1
+\end{equation*}
+
+por ultimo por la parte a de nuevo tenemos
+\begin{equation*}
+    |X \cup \{h\}| + |Y \cup \{h\}|
+\end{equation*}
+
+repitiendo $n$ veces el proceso sigue que $|X \cup Y| + |X \cap Y| = |X| + |Y|$
+\parte
+Sea $X$ e $Y$ finitos, tal que $|X| = m$, sea $f$ la biyeccion de $X$ en $I_m$, haremos inducción sobre el tamaño de |Y|.
+Si |Y| = 1 entonces, existe solo 1 elemento $y_0 \in Y$, entonces todo elemento de $X \times Y$ es de la
+forma $(x, y_0)$, consideraremos la biyeccion trivial de $\varphi : X \times Y \to I_m$ dada por $\varphi((x, y)) = f(x)$
+
+\begin{align*}
+    \varphi(x, y) &= \varphi(a, b)\\
+    f(x) &= f(a)\\
+    x &= a
+\end{align*}
+y dado que la segunda coordenada solo puede tomar el valor de $y_0$ tenemos que es inyectiva. Dado un elemento $k \in I_m$, $\varphi(f^{-1}(k), y_0) = k$
+por tanto biyectiva. y $|X \times Y| = m \cdot 1 = |X| \cdot |Y|$
+
+Paso inductivo asumamos que $|Y| = n + 1$, agregándole el elemento y_{n+1} entonces
+\begin{equation*}
+    X \times Y = (X \times (Y - \{y_{n+1}\})) \cup (X \times \{y_{n+1}\})
+\end{equation*}
+Dado que la segunda coordenada es distinta para elementos en $X \times (Y - \{y_{n+1}\})$ y $X \times \{y_{n+1}\}$, estos son disjuntos
+por lo que podemos aplicar la parte B para decir que su cardinalidad es la suma de las cardinalidades.
+\begin{equation*}
+    |X \times (Y - \{y_{n+1}\}) \cup X \times \{y_{n+1}\}| = |X \times (Y - \{y_{n+1}\})| + |X \times \{y_{n+1}\}|
+\end{equation*}
+y por hipotesis de inductiva obtenemos
+\begin{equation*}
+    |X \times (Y - \{y_{n+1}\})| + |X \times \{y_{n+1}\}| = m \cdot n + m = m \cdot (n + 1)
+\end{equation*}
+la ultima igualdad por definición de la multiplicación, despues de aplicar $n$ veces el proceso obtenemos el resultado esperado.
+
+* Demostrar que tener el mismo cardinal es una relacion de equivalencia y que satisface ciertas propiedades
+\parte
+Notar que $f = \sig{id}{X}{X}$ es una biyeccion de $X$ en $X$
+
+Directamente desde la definición de $f$
+\begin{align*}
+    f(x) &= f(y)\\
+    x &= y
+\end{align*}
+Por tanto inyectiva
+
+Dado un $x \in X$ entonces $f(x) = x$ por tanto es sobreyectiva. De esto sigue que es
+biyectiva. Lo que significa que $X$ tiene el mismo cardinal que $X$
+
+\parte
+Si $X$ tiene el mismo cardinal que $Y$ entonces existe
+una función $f: X \to Y$ que es biyectiva, sabemos
+que $f^{-1}: Y \to X$ es biyectiva por tanto $Y$ tiene el mismo cardinal que $X$
+
+\parte
+Si $X$ tiene el mismo cardinal que $Y$ e $Y$ tiene el mismo cardinal que $Z$
+entonces sabemos que existen biyecciones $\varphi : X \to Y$ y $\psi : Y \to Z$.
+Sabemos que la composición de funciones biyectivas es biyectiva por tanto
+$f : X \to Z$ tal que $f(x) = \psi(\varphi(x))$ es biyectiva. Por tanto
+$X$ tiene el mismo cardinal que $Z$
+
+\parte
+Consideremos una función inyectiva $\varphi : X \to Y$ la cual existe ya que $X$ tiene menor cardinal que
+$Y$, ahora dado que $\varphi$ es inyectiva tiene un inversa por la izquierda que llamaremos $\psi : Y \to X$.
+Pero si $\psi \circ \varphi = id_X$ tenemos que $\psi$ tiene una inversa por la derecha ($\varphi$) por lo cual es sobreyectiva.
+Lo que significa que $Y$ tiene mayor cardinal que $X$.
+
+\parte
+Consideremos una función sobreyectiva de $\sig{\phi}{X}{Y}$ la cual existe ya que $X$ tiene mayor cardinal
+que $Y$, ahora dado que $\varphi$ es sobreyectiva tiene una inversa por la derecha tal que $\sig{\psi}{Y}{X}$
+y $\varphi(\psi(y)) = y$, pero esto significa que $\varphi \circ \psi = id_Y$ es decir que $\psi$ tiene inversa
+por la izquierda ($\varphi$) por lo cual es inyectiva. Lo que significa que $Y$ tiene menor cardinal que $X$
