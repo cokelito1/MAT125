@@ -1,0 +1,380 @@
+#+title: Tarea 2
+#+author: Jorge Eduardo Bravo Soto
+#+email: jorge.bravos@usm.cl
+#+LANGUAGE: es
+#+LATEX_CLASS: article
+
+#+LATEX_HEADER: \usepackage[letterpaper]{geometry}
+#+LATEX_HEADER: \usepackage{amssymb, amsmath}
+#+LATEX_HEADER: \usepackage{lastpage}
+#+LATEX_HEADER: \usepackage[AUTO]{babel}
+#+LATEX_HEADER: \usepackage{eulervm}
+#+LATEX_HEADER: \usepackage{concrete}
+#+LATEX_HEADER: \usepackage{tikz-cd}
+#+LATEX_HEADER: \usepackage{hwsymb}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usetikzlibrary{babel}
+#+LATEX_HEADER: \pagenumbering{arabic}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{lemma}[theorem]{Lema}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+
+#+LATEX_HEADER: \renewcommand*{\maketitle}{\begingroup % Create the command for including the title page in the document
+#+LATEX_HEADER: \centering % Center all text
+#+LATEX_HEADER: \vspace*{10\baselineskip} % White space at the top of the page
+#+LATEX_HEADER:
+#+LATEX_HEADER: {\LARGE Tarea 2}\\[0.2\baselineskip] % Title
+#+LATEX_HEADER:
+#+LATEX_HEADER: \scshape % Small caps
+#+LATEX_HEADER:
+#+LATEX_HEADER: \vspace*{2\baselineskip} % Whitespace between location/year and editors
+#+LATEX_HEADER:
+#+LATEX_HEADER: {\Large Alumno: Jorge Eduardo Bravo Soto \\ Rol: 202103004-2 \\ Profesor: Alexander Quaas \\ Clase: MAT125\par} % Editor list
+#+LATEX_HEADER:
+#+LATEX_HEADER: \pagenumbering{gobble}
+#+LATEX_HEADER: \newpage
+#+LATEX_HEADER: \endgroup}
+
+
+#+OPTIONS: toc:nil
+
+
+#+LATEX_HEADER: \fancyhead{}
+#+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
+#+LATEX_HEADER: \renewcommand{\footrulewidth}{0.4pt}% default is 0pt
+\pagenumbering{arabic}
+\pagestyle{fancy}
+* Pregunta 1
+    Demostraremos que si $\{x_n\}$ e $\{y_{n}\}$ son sucesiones y $\lim_{n \to \infty} x_{n} = L$ y $\lim_{n \to \infty} (x_{n} - y_{n}) = 0$ entonces $\lim_{n \to \infty} y_{n} = L$
+
+    \begin{proof}
+    Considere $\varepsilon > 0$ y N = $\max \{n_{0}, n_{1}\}$ donde $n_{0}$ es aquel que
+    $n > n_{0} \implies |x_{n} - L| < \frac{\varepsilon}{2}$ y $n_{1}$ es aquel que si
+    $n > n_{1} \implies |x_{n} - y_{n} - 0| < \frac{\varepsilon}{2}$. Estos valores existen por la definición
+    del límite.
+
+    Entonces si $n > N$
+    \begin{align*}
+        |y_{n} - L| = |y_{n} - x_{n} + x_{n} - L| \leq |y_n - x_n| + |x_n - L| = |x_n - y_n| + |x_n - L| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+    \end{align*}
+    Por lo tanto
+    \begin{equation*}
+        |y_n - L| < \varepsilon
+    \end{equation*}
+    Lo que significa, por definición que $\lim_{n \to \infty} y_{n} = L$.
+\end{proof}
+
+* Pregunta 2
+** Parte A
+\begin{proof}
+    Supongamos, para la contradicción, que existe algún $n \in \mathbb{N}$ tal que $0 < x_{n} < 1$,
+    entonces multiplicando $n$ veces $x_{n}$ y $n$ veces el 1 por sí mismo obtenemos
+    \begin{equation*}
+        0 < x_{n} < 1 \implies 0 < (x_{n})^{n} < 1
+    \end{equation*}
+
+    pero $(x_{n})^{n} = n$ y $n$ es natural pero obtuvimos que $0 < n < 1$ lo cual es una contradicción, pues
+    no existe ningún número natural entre 0 y 1. Por lo tanto para todo $n$ natural tenemos que $x_{n} \geq 1$
+\end{proof}
+** Parte B
+\begin{proof}
+    Notar que si $n \geq 3$ entonces
+    \begin{align*}
+        3 &\leq n\\
+        (1 + \frac{1}{n})^{n} - n &< 3 - n \leq 0\\
+        n^{n}((1 + \frac{1}{n})^{n} - n) &< 0\\
+        (n + 1)^{n} - n^{n + 1} &< 0\\
+        (n + 1)^{n} &< n^{n + 1}\\
+        x_{n + 1} = (n + 1)^{\frac{1}{n + 1}} &< n^{\frac{1}{n}} = x_{n}\\
+        x_{n + 1} &< x_{n}
+    \end{align*}
+
+    Por lo tanto si $n \geq 3$ entonces la sucesión es decreciente.
+\end{proof}
+** Parte C
+\begin{proof}
+    Es convergente pues es decreciente y acotada, por el teorema de convergencia monótona esta converge.
+\end{proof}
+
+** Parte D
+\begin{lemma}
+    Demostraremos que $\lim_{n \to \infty} \sqrt[n]{2} = 1$.
+    Que la sucesión está acotada por 1 sigue por un argumento similar al de la Parte A.
+
+    Demostraremos que es decreciente
+    \begin{align*}
+        2^{\frac{1}{n + 1}} < 2^{\frac{1}{n}} \iff 2^{n} < 2^{n + 1} \iff 2^{x} - 2^{x + 1} < 0 \iff -2^{n} < 0
+    \end{align*}
+    Pero $2^{n}$ es positivo para todo $n \in \mathbb{N}$ entonces la sucesión es decreciente por lo que converge.
+
+    Demostraremos que converge a 1, consideremos la subsucesión $\{\sqrt[2n]{2}\}$ la cual converge a $L$, pues es una
+    subsucesión de $\{\sqrt[n]{2}\}$, entonces por álgebra de límites sigue que
+
+    \begin{align*}
+       \lim_{n \to \infty} \sqrt[2n]{2} &= L\\
+       \lim_{n \to \infty} \sqrt[n]{2} &= L^{2}\\
+        L &= L^{2}
+    \end{align*}
+
+    Por lo tanto $L = 0 \lor L = 1$ pero no puede ser 0 ya que la sucesión converge a su ínfimo pues es acotada y decreciente, por
+    lo que converge a 1.
+\end{lemma}
+
+\begin{proof}
+    Consideraremos la siguiente subsucesión, $x_{n_{k}} = (2k)^{\frac{1}{2k}}$, dado que la sucesión completa converge a $L$ esta subsucesión también converge a $L$.
+    De esto sigue por álgebra de límites que
+    \begin{align*}
+        \lim_{k \to \infty} (2k)^{\frac{1}{2k}} &= L\\
+        \lim_{k \to \infty} (2k)^{\frac{1}{k}} &= L^{2}\\
+        \lim_{k \to \infty} 2^{\frac{1}{k}} \cdot k^{\frac{1}{k}} &= L^{2}\\
+        \lim_{k \to \infty} 2^{\frac{1}{k}} \cdot \lim_{k \to \infty} k^{\frac{1}{k}} &= L^{2}\\
+        L &= L^{2}
+    \end{align*}
+
+    Por lo tanto $L = L^{2} \iff L(1 - L) = 0$ pero sabemos que dado que la sucesión es decreciente y acotada esta converge al ínfimo, y demostramos que $1$ es una cota
+    inferior por lo que $L$ no puede valer 0, por lo tanto $L = 1$.
+\end{proof}
+
+* Pregunta 3
+** Parte A
+\begin{lemma}
+    Si $\lim_{n \to \infty} \frac{a_{n}}{1 + a_{n}} = 0$ y $a_{n} \geq 0$ entonces $\lim_{n \to \infty} a_{n} = 0$
+
+    Dado un $\varepsilon > 0$, supongamos que $\varepsilon \leq \frac{1}{2}$, entonces sea $n_{0}$ aquel que
+    si $n > n_{0} \implies |\frac{a_{n}}{1 + a_{n}}| < \frac{2}{3}\varepsilon$, este $n_{0}$ existe
+    pues $\lim_{n \to \infty} \frac{a_{n}}{1 + a_{n}} = 0$, ahora notar que $\frac{a_{n}}{1 + a_{n}} \geq 0$
+    entonces $|\frac{a_{n}}{1 + a_{n}}| = \frac{a_{n}}{1 + a_{n}} < \frac{2}{3} \varepsilon$. Notar también
+    que
+    \begin{equation*}
+        \frac{2}{3} \varepsilon \leq \frac{1}{3} \iff -\frac{2}{3} \varepsilon \geq -\frac{1}{3} \iff 1 - \frac{2}{3} \varepsilon \geq \frac{2}{3} > 0
+    \end{equation*}
+
+    entonces ahora tenemos lo siguiente
+    \begin{equation*}
+        \frac{a_{n}}{1 + a_{n}} < \frac{2}{3} \varepsilon \implies a_{n} < \frac{2}{3} \varepsilon + \frac{2}{3}\varepsilon \cdot a_{n} \implies a_{n}(1 - \frac{2}{3} \varepsilon) < \frac{2}{3} \varepsilon
+    \end{equation*}
+
+    De lo que podemos concluir que
+    \begin{equation*}
+        a_{n} < \frac{\frac{2}{3} \varepsilon}{1 - \frac{2}{3} \varepsilon}
+    \end{equation*}
+
+    ahora notemos que
+    \begin{equation*}
+        \frac{2}{3} \varepsilon \leq \frac{1}{3} \implies -\frac{2}{3} \varepsilon \geq -\frac{1}{3} \implies 1 - \frac{2}{3} \varepsilon \geq \frac{2}{3} \implies \frac{1}{1 - \frac{2}{3} \varepsilon} \leq \frac{3}{2} \implies \frac{\frac{2}{3} \varepsilon}{1 - \frac{2}{3} \varepsilon} \leq \varepsilon
+    \end{equation*}
+
+    de lo que podemos concluir
+    \begin{equation*}
+        0 \leq a_{n} < \frac{\frac{2}{3} \varepsilon}{1 - \frac{2}{3} \varepsilon} \leq \varepsilon \implies |a_{n}| < \varepsilon
+    \end{equation*}
+
+    Por lo tanto si $n > n_{0} \implies |a_{n}| < \varepsilon$, en caso de $\varepsilon > \frac12$, tomamos $\varepsilon = \frac12$ y nos queda que $|a_{n}| < \frac12 < \varepsilon$
+
+    Por lo tanto, por definición, $\lim_{n \to \infty} a_{n} = 0$
+\end{lemma}
+
+\begin{proof}
+Asumamos que $\sum_{n = 1}^{\infty} a_{n}$ converge entonces notar que
+\begin{equation*}
+    \forall n \in \mathbb{N}, \frac{a_{n}}{1 + a_{n}} \leq a_{n}
+\end{equation*}
+Pues $a_{n}$ es positivo, por lo tanto $\sum_{n = 1}^{\infty} \frac{a_{n}}{1 + a_{n}}$ converge por criterio de comparación.
+
+Asumamos que $\sum_{n = 1}^{\infty} \frac{a_{n}}{1 + a_{n}}$ converge entonces notar que $\lim_{n \to \infty} \frac{a_{n}}{1 + a_{n}} = 0$ entonces por el lema $\lim_{n \to \infty} a_{n} = 0$ entonces existe $n_{0}$ tal que si $n > n_{0}$ entonces $0 \leq a_{n} < \frac{1}{2}$ notar que.
+
+\begin{equation*}
+    a_{n} < \frac12 \implies 1 + a_{n} < \frac{3}{2} \implies \frac{1}{1 + a_{n}} > \frac{2}{3} \implies \frac{a_{n}}{1 + a_{n}} > \frac{2}{3}a_{n} \implies a_{n} < \frac{3}{2} \cdot \frac{a_{n}}{1 + a_{n}}
+\end{equation*}
+
+Entonces tenemos que
+\begin{equation*}
+    \sum_{n = 1}^{\infty} a_{n} = \sum_{n = 1}^{n_{0}} a_{n} + \sum_{n = n_{0} + 1}^{\infty} a_{n}
+\end{equation*}
+
+pero por la desigualdad que obtuvimos tenemos que
+\begin{equation*}
+    \sum_{n = n_{0} + 1}^{\infty} a_{n} < \frac{3}{2} \sum_{n = n_{0} + 1}^{\infty} \frac{a_{n}}{1 + a_{n}}
+\end{equation*}
+
+Entonces por criterio de comparación converge y por lo tanto la serie completa converge.
+\end{proof}
+** Parte B
+\begin{proof}
+    Dado que $\sum_{n = 1}^{\infty} a_{n}$ converge esto implica, visto en clases, que $\lim_{n \to \infty} a_{n} = 0$ entonces ocupando el
+    criterio de la raíz en la sucesión $\sum_{n = 1}^{\infty} (a_{n})^{n}$ obtenemos lo siguiente
+
+    \begin{equation*}
+        \lim_{n \to \infty} \sqrt[n]{|(a_{n})^{n}|} = \lim_{n \to \infty} \sqrt[n]{(a_{n})^{n}} = \lim_{n \to \infty} a_{n} = 0
+    \end{equation*}
+
+    Por lo tanto $\sum_{n = 1}^{\infty} (a_{n})^{n}$ converge.
+\end{proof}
+* Pregunta 4
+** Parte A
+
+\begin{proof}
+    Notar que dado que $\{a_{n}\}$ es decreciente entonces para todo $n \in \mathbb{N}$, si $2^{n} + 1 \leq k \leq 2^{n + 1}$ entonces
+    \begin{equation*}
+       a_{2^{n + 1}} \leq a_{k} \implies \sum_{m = 2^{n} + 1}^{2^{n + 1}} a_{2^{n+1}} \leq \sum_{m = 2^{n} + 1}^{2^{n + 1}} a_{m}
+    \end{equation*}
+    Notar también que
+    \begin{equation*}
+        \sum_{m = 2^{n} + 1}^{2^{n + 1}} a_{2^{n+1}} = a_{2^{n+1}} \cdot (2^{n + 1} - (2^{n} + 1) + 1) = a_{2^{n+1}} \cdot (2^{n + 1} - 2^{n}) = a_{2^{n+1}} \cdot 2^{n} \cdot (2 - 1) = 2^{n}a_{2^{n+1}}
+    \end{equation*}
+    Por lo tanto
+
+    \begin{equation*}
+        S_{2^{n + 1}} = S_{2^{n}} + \sum_{m = 2^{n} + 1}^{2^{n + 1}} a_{m} \geq S_{2^{n}} + \sum_{m = 2^{n} + 1}^{2^{n + 1}} a_{2^{n+1}} = S_{2^{n}} + 2^{n}a_{2^{n + 1}}
+    \end{equation*}
+    Entonces queda demostrado que
+    \begin{equation*}
+       S_{2^{n + 1}} \geq S_{2^{n}} + 2^{n}a_{2^{n + 1}}
+    \end{equation*}
+\end{proof}
+** Parte B
+\begin{proof}
+    Notar que dado que $\{a_{n}\}$ es decreciente entonces para todo $n \in \mathbb{N}$, si $2^{n + 1} \leq k \leq 2^{n + 2} - 1$ entonces
+    \begin{equation*}
+        a_{2^{n +1}} \geq a_{k} \implies \sum_{m = 2^{n + 1}}^{2^{n + 2} - 1} a_{2^{n + 1}} \geq \sum_{m = 2^{n + 1}}^{2^{n + 2} - 1} a_{m}
+    \end{equation*}
+
+    Notar que
+    \begin{equation*}
+        \sum_{m = 2^{n + 1}}^{2^{n + 2} - 1} a_{2^{n + 1}} = (2^{n + 2} - 1 - 2^{n + 1} + 1)a_{2^{n + 1}} = 2^{n + 1}(2 - 1)a_{2^{n + 1}} = 2^{n + 1}a_{2^{n + 1}}
+    \end{equation*}
+
+    Por lo tanto
+    \begin{equation*}
+        S_{2^{n + 2} - 1} = S_{2^{n + 1} - 1} + \sum_{m = 2^{n + 1}}^{2^{n + 2} - 1} a_{m} \leq S_{2^{n + 1} - 1} + \sum_{m = 2^{n + 1}}^{2^{n + 2} - 1} a_{2^{n + 1}} = S_{2^{n + 1} - 1} + 2^{n + 1}a_{2^{n + 1}}
+    \end{equation*}
+    Entonces queda demostrado que $S_{2^{n + 2} - 1} \leq S_{2^{n + 1} - 1} + 2^{n + 1}a_{2^{n + 1}}$
+\end{proof}
+
+** Parte C
+\begin{proof}
+    Notar que de la parte A sigue que
+    \begin{equation*}
+        S_{2^{n + 1}} \geq S_{2^{n}} + 2^{n}a_{2^{n + 1}} \implies 2S_{2^{n + 1}} \geq 2S_{2^{n}} + 2^{n+1}a_{2^{n + 1}}
+    \end{equation*}
+
+    Procederemos por inducción
+    Caso base
+    \begin{equation*}
+        S_{2^{1} - 1} = \sum_{k = 1}^{1} a_{k} = a_{1} = \sum_{k=0}^{0} 2^{k}a_{2^{k}} = T_{0} \leq 2a_{1} = 2\sum_{k = 1}^{2^{0}} a_{k} = 2S_{2^{0}}
+    \end{equation*}
+    Por lo tanto $S_{2^{1} - 1} \leq T_{0} \leq 2S_{2^{0}}$ El cual es nuestro caso base
+
+    Paso inductivo notar que
+    \begin{equation*}
+        S_{2^{n + 2} - 1} \leq S_{2^{n + 1} - 1} + 2^{n + 1}a_{2^{n + 1}} \leq T_{n} + 2^{n + 1}a_{2^{n + 1}} = T_{n + 1}
+    \end{equation*}
+    De esto se concluye que $S_{2^{n + 2} - 1} \leq T_{n + 1}$ por inducción sigue que $S_{2^{n + 1} - 1} \leq T_{n}$ para todo $n \geq 0$, ahora demostraremos la otra parte de la desigualdad
+
+    \begin{equation*}
+        T_{n + 1} = T_{n} + 2^{n + 1}a_{n + 1} \leq 2S_{2^{n}} + 2^{n + 1}a_{n + 1} \leq 2S_{2^{n + 1}}
+    \end{equation*}
+    De esto se concluye que $T_{n + 1} \leq 2S_{2^{n + 1}}$, por inducción sigue que $T_{n} \leq 2S_{2^{n}}$ para todo $n \geq 0$. Por transitividad se tiene que $S_{2^{n + 1} - 1} \leq T_{n} \leq 2S_{2^{n}}$ para $n > 0$.
+\end{proof}
+** Parte D
+\begin{lemma}
+    Desmotraremos que $n \leq 2^{n}$
+    Notar que $1 \leq 2^{1}$
+
+    notar que $n + 1 \leq 2n \leq 2 \cdot 2^{n} = 2^{n + 1}$
+    por inducción sigue que $n \leq 2^{n}$ para todo $n \geq 1$
+\end{lemma}
+
+\begin{lemma}
+    Demostraremos que $2^{n} < 2^{n + 1} - 1$
+    Notar que
+    \begin{equation*}
+        2^{n} > 1 \implies 2^{n} + 2^{n} > 1 + 2^{n} \implies 2^{n + 1} - 1 > 2^{n}
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    Supongamos que $\sum_{n = 1}^{\infty} a_{n}$ converge, entonces
+    dado que converge es acotada por un valor $M$ y juntando esto con la parte C tenemos
+    \begin{equation*}
+        \sum_{k = 1}^{n} 2^{k}a_{2^{k}} \leq 2 \sum_{k = 1}^{2^{n}} a_{k} \leq 2M
+    \end{equation*}
+    Dado que todos los términos son positivos y $\sum_{k = 1}^{n} 2^{k}a_{2^{k}}$ es acotado para todo n,
+    la serie converge.
+
+    Supongamos que $\sum_{n = 1}^{\infty} 2^{n}a_{2^{n}}$ converge, entonces
+    dado que converge es acotada por un valor $M$ y juntando esto con la parte C, el lema y que los términos
+    son positivos obtenemos que
+    \begin{equation*}
+        \sum_{k = 1}^{n} a_{k} \leq \sum_{k = 1}^{2^{n}} a_{k} \leq \sum_{k = 1}^{2^{n + 1} - 1} a_{k} \leq \sum_{k = 1}^{n} 2^{k}a_{2^{k}} \leq M
+    \end{equation*}
+    Dado que todos los términos son positivos y $\sum_{k = 1}^{n} a_{k}$ es acotada para todo n, la serie converge.
+\end{proof}
+* Pregunta 5
+** Parte A
+\begin{lemma}
+    $\{\frac{1}{n^{2}}\}$ es decreciente, Notar que $1 > \frac{1}{2^{2}} = \frac{1}{4}$
+    \begin{equation*}
+        n < n + 1 \implies n^{2} < (n + 1)^{2} \implies \frac{1}{n^{2}} > \frac{1}{(n + 1)^{2}}
+    \end{equation*}
+    Por induccion sigue el resultado.
+\end{lemma}
+
+\begin{lemma}
+    \label{conv}
+    Demostraremos que $\sum_{n = 1}^{\infty} \frac{1}{n^{2}}$ converge
+
+    Notemos que los terminos son decreciente por lo tanto por la Pregunta 4, $\sum_{n = 1}^{\infty} \frac{1}{n^{2}}$ converge si y solo si $\sum_{n = 1}^{\infty} \frac{2^{k}}{(2^{k})^{2}}$ converge pero notar que
+
+    \begin{equation*}
+        \sum_{n = 1}^{\infty} \frac{2^{k}}{(2^{k})^{2}} = \sum_{n = 1}^{\infty} \frac{2^{k}}{2^{2k}} = \sum_{n = 1}^{\infty} \frac{1}{2^{k}}
+    \end{equation*}
+    Por lo tanto esta ultima serie converge pues es una serie geométrica con razón $\frac{1}{2}$, por lo tanto $\sum_{n = 1}^{\infty} \frac{1}{n^{2}}$ converge.
+\end{lemma}
+
+\begin{proof}
+    Considere la serie armónica $\sum_{n = 1}^{\infty} \frac{1}{n}$ la cual se vio en clases que diverge
+    pero $\sum_{n = 1}^{\infty} \frac{1}{n^{2}} = \sum_{n = 1}^{\infty} \frac{1}{n} \cdot \frac{1}{n}$ y
+    esta ultima converge por el lema anterior.
+\end{proof}
+** Parte B
+\begin{lemma}
+    \label{l0}
+    Demostraremos que $\lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0$
+
+    Sea $\varepsilon > 0$ y $n > \frac{1}{\varepsilon^{2}}$ entonces
+    \begin{equation*}
+       n > \frac{1}{\varepsilon^{2}} \implies \frac{1}{n} < \varepsilon^{2} \implies \frac{1}{\sqrt{n}} < |\varepsilon| \implies |\frac{1}{\sqrt{n}}| < \varepsilon
+    \end{equation*}
+
+    Lo último sigue pues $\sqrt{n}$ es positivo.
+
+    Por definición entonces $\lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0$
+\end{lemma}
+
+\begin{proof}
+
+    Considere la siguiente serie alternante $\sum_{n = 1}^{\infty} (-1)^{n} \frac{1}{\sqrt{n}}$
+    dado que $\{\frac{1}{\sqrt{n}}\}$ es decreciente y por el Lema anterior $\lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0$, la serie converge por criterio de Leibniz visto en clases pero
+    \begin{equation*}
+    \sum_{n = 1}^{\infty} (-1)^{n} \frac{1}{\sqrt{n}} \cdot (-1)^{n} \frac{1}{\sqrt{n}} = \sum_{n = 1}^{\infty} (-1)^{2n} \cdot \frac{1}{n} = \sum_{n = 1}^{\infty} \frac{1}{n}
+    \end{equation*}
+
+    Pero la ultima es la serie armónica la cual se vio en clases que diverge.
+\end{proof}
+
+** Parte C
+\begin{proof}
+Dado que $\ser{n} |b_{n}|$ converge entonces $\lim_{n \to \infty} |b_{n}|$ converge y por lo tanto
+$\{|b_{n}|\}$ es acotado por un número $|M|$.
+
+Por lo tanto
+\begin{equation*}
+    \ser{n} |a_{n}b_{n}| = \ser{n} |a_{n}||b_{n}| \leq \ser{n} |a_{n}||M| = |M| \ser{n} |a_{n}|
+\end{equation*}
+
+Entonces tenemos que $\ser{n} |a_{n}b_{n}| \leq |M| \ser{n} |a_{n}|$ pero esta ultima converge, dado
+que todos los valores son positivos por criterio de comparación $\ser{n} |a_{n}b_{n}|$ converge.
+\end{proof}
