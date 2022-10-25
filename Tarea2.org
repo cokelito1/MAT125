@@ -2,6 +2,8 @@
 #+author: Jorge Eduardo Bravo Soto
 #+email: jorge.bravos@usm.cl
 #+LANGUAGE: es
+#+EXPORT_FILE_NAME: pdf/Tarea2
+
 #+LATEX_CLASS: article
 
 #+LATEX_HEADER: \usepackage[letterpaper]{geometry}
@@ -11,7 +13,7 @@
 #+LATEX_HEADER: \usepackage{eulervm}
 #+LATEX_HEADER: \usepackage{concrete}
 #+LATEX_HEADER: \usepackage{tikz-cd}
-#+LATEX_HEADER: \usepackage{hwsymb}
+#+LATEX_HEADER: \usepackage{macros/hwsymb}
 #+LATEX_HEADER: \usepackage{graphicx}
 #+LATEX_HEADER: \usetikzlibrary{babel}
 #+LATEX_HEADER: \pagenumbering{arabic}
@@ -44,6 +46,8 @@
 #+LATEX_HEADER: \fancyhead{}
 #+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
 #+LATEX_HEADER: \renewcommand{\footrulewidth}{0.4pt}% default is 0pt
+
+
 \pagenumbering{arabic}
 \pagestyle{fancy}
 * Pregunta 1
