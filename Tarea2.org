@@ -278,7 +278,7 @@ Entonces por criterio de comparación converge y por lo tanto la serie completa 
     De esto se concluye que $S_{2^{n + 2} - 1} \leq T_{n + 1}$ por inducción sigue que $S_{2^{n + 1} - 1} \leq T_{n}$ para todo $n \geq 0$, ahora demostraremos la otra parte de la desigualdad
 
     \begin{equation*}
-        T_{n + 1} = T_{n} + 2^{n + 1}a_{n + 1} \leq 2S_{2^{n}} + 2^{n + 1}a_{n + 1} \leq 2S_{2^{n + 1}}
+        T_{n + 1} = T_{n} + 2^{n + 1}a_{n + 1} \leq 2S_{2^{n}} + 2^{n + 1}a_{n + 1} = 2(S_{2^{n}} + 2^{n}a_{n + 1}) \leq 2S_{2^{n + 1}}
     \end{equation*}
     De esto se concluye que $T_{n + 1} \leq 2S_{2^{n + 1}}$, por inducción sigue que $T_{n} \leq 2S_{2^{n}}$ para todo $n \geq 0$. Por transitividad se tiene que $S_{2^{n + 1} - 1} \leq T_{n} \leq 2S_{2^{n}}$ para $n > 0$.
 \end{proof}
