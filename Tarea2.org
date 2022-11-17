@@ -23,9 +23,14 @@
 #+LATEX_HEADER: \newtheorem{lemma}[theorem]{Lema}
 #+LATEX_HEADER: \usepackage{fancyhdr}
 
+#+LATEX_HEADER: \usepackage{tikz-cd}
+#+LATEX_HEADER: \usetikzlibrary{babel}
+
 #+LATEX_HEADER: \renewcommand*{\maketitle}{\begingroup % Create the command for including the title page in the document
 #+LATEX_HEADER: \centering % Center all text
 #+LATEX_HEADER: \vspace*{10\baselineskip} % White space at the top of the page
+#+LATEX_HEADER: \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
+#+LATEX_HEADER: \rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
 #+LATEX_HEADER:
 #+LATEX_HEADER: {\LARGE Tarea 2}\\[0.2\baselineskip] % Title
 #+LATEX_HEADER:
@@ -34,6 +39,8 @@
 #+LATEX_HEADER: \vspace*{2\baselineskip} % Whitespace between location/year and editors
 #+LATEX_HEADER:
 #+LATEX_HEADER: {\Large Alumno: Jorge Eduardo Bravo Soto \\ Rol: 202103004-2 \\ Profesor: Alexander Quaas \\ Clase: MAT125\par} % Editor list
+#+LATEX_HEADER: \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal line
+#+LATEX_HEADER: \rule{\textwidth}{1.6pt}\\[\baselineskip] % Thick horizontal line
 #+LATEX_HEADER:
 #+LATEX_HEADER: \pagenumbering{gobble}
 #+LATEX_HEADER: \newpage
@@ -382,3 +389,8 @@ Por lo tanto
 Entonces tenemos que $\ser{n} |a_{n}b_{n}| \leq |M| \ser{n} |a_{n}|$ pero esta ultima converge, dado
 que todos los valores son positivos por criterio de comparación $\ser{n} |a_{n}b_{n}|$ converge.
 \end{proof}
+
+* Test
+\begin{tikzcd}[ampersand replacement = \&]
+    A \arrow[r, "A"] \& B
+\end{tikzcd}

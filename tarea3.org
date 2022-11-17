@@ -1,0 +1,320 @@
+#+title: Tarea 3
+#+author: Jorge Eduardo Bravo Soto
+#+email: jorge.bravos@usm.cl
+#+LANGUAGE: es
+#+EXPORT_FILE_NAME: pdf/Tarea3
+
+#+LATEX_CLASS: article
+
+#+LATEX_HEADER: \usepackage[letterpaper]{geometry}
+#+LATEX_HEADER: \usepackage{amssymb, amsmath}
+#+LATEX_HEADER: \usepackage{lastpage}
+#+LATEX_HEADER: \usepackage[AUTO]{babel}
+#+LATEX_HEADER: \usepackage{eulervm}
+#+LATEX_HEADER: \usepackage{concrete}
+#+LATEX_HEADER: \usepackage{tikz-cd}
+#+LATEX_HEADER: \usepackage{macros/hwsymb}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usetikzlibrary{babel}
+#+LATEX_HEADER: \pagenumbering{arabic}
+#+LATEX_HEADER: \usepackage{microtype}
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \newtheorem{theorem}{Theorem}[section]
+#+LATEX_HEADER: \newtheorem{lemma}[theorem]{Lema}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+
+#+LATEX_HEADER: \usepackage{tikz-cd}
+#+LATEX_HEADER: \usetikzlibrary{babel}
+
+#+LATEX_HEADER: \renewcommand*{\maketitle}{\begingroup % Create the command for including the title page in the document
+#+LATEX_HEADER: \centering % Center all text
+#+LATEX_HEADER: \vspace*{10\baselineskip} % White space at the top of the page
+#+LATEX_HEADER: \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal line
+#+LATEX_HEADER: \rule{\textwidth}{0.4pt}\\[\baselineskip] % Thin horizontal line
+#+LATEX_HEADER:
+#+LATEX_HEADER: {\LARGE Tarea 3}\\[0.2\baselineskip] % Title
+#+LATEX_HEADER:
+#+LATEX_HEADER: \scshape % Small caps
+#+LATEX_HEADER:
+#+LATEX_HEADER: \vspace*{2\baselineskip} % Whitespace between location/year and editors
+#+LATEX_HEADER:
+#+LATEX_HEADER: {\Large Alumno: Jorge Eduardo Bravo Soto \\ Rol: 202103004-2 \\ Profesor: Alexander Quaas \\ Clase: MAT125\par} % Editor list
+#+LATEX_HEADER: \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal line
+#+LATEX_HEADER: \rule{\textwidth}{1.6pt}\\[\baselineskip] % Thick horizontal line
+#+LATEX_HEADER:
+#+LATEX_HEADER: \pagenumbering{gobble}
+#+LATEX_HEADER: \newpage
+#+LATEX_HEADER: \endgroup}
+
+
+#+OPTIONS: toc:nil
+
+
+#+LATEX_HEADER: \fancyhead{}
+#+LATEX_HEADER: \renewcommand{\headrulewidth}{0pt}
+#+LATEX_HEADER: \renewcommand{\footrulewidth}{0.4pt}% default is 0pt
+
+
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+* Pregunta 1
+** Parte A
+\begin{proof}
+Sean $K_{1}$ y $K_{2}$ subconjuntos de $\R$ compactos, por el teorema de Heine-Borel un subconjunto de $\R$
+es compacto si y solo si es acotado y cerrado, demostraremos $K_{1} \union K_{2}$ es cerrado y acotado.
+
+Recordemos de las clases de topología que la unión finita de conjuntos cerrados es cerrada, por lo tanto
+$K_{1} \union K_{2}$ es cerrado pues es una unión finita. Dado que $K_{1}$ y $K_{2}$ son acotados existen
+$M_{1}$ y $M_{2}$ tal que son cotas de $K_{1}$ y $K_{2}$ respectivamente, sea $M = \max\{M_{1}, M_{2}\}$
+entonces $x \in (K_{1} \union K_{2}) \implies x \leq M$. Dado que la unión es cerrada y acotado, por
+Heine-Borel es compacto.
+\end{proof}
+** Parte B
+\begin{proof}
+    Sean $(K_{n})_{n \in \N}$ una familia de conjuntos compactos, entonces por Heine-Borel
+    cada uno de ellos es cerrado y acotado de esto sigue que $\bigcap_{n \in \N} K_{n}$ es cerrado pues
+    la intersección arbitraria de cerrados es cerrado. Luego $x \in \bigcap_{n \in \N} K_{n} \implies
+    x \in K_{1} \implies x \leq M$ pues $K_{1}$ es acotado. Por Heine-Borel $\bigcap_{n \in \N} K_{n}$ es
+    compacto pues es cerrado y acotado.
+\end{proof}
+
+* Pregunta 2
+** Parte A
+\begin{proof}
+Supongamos que $\lim_{x \to a} f(x) = +\infty$ y $0 < |x - a| < \delta_{g} \implies M \leq g(x) \implies - M \geq -g(x)$
+
+Sea $A > 0$ entonces existe $\delta_{1}$ tal que
+\begin{equation*}
+   0 < |x - a| < \delta_{1} \implies f(x) > \max\{1, A - M\}
+\end{equation*}
+
+luego tomamos $\delta = \min \{\delta_{1} \delta_{g}\}$ de esto sigue que
+\begin{equation*}
+    0 < |x - a| < \delta \implies f(x) > \max \{1, A - M\} \geq A - M \geq A - g(x)
+\end{equation*}
+
+De las desigualdades sigue que
+\begin{equation*}
+    0 < |x - a| < \delta \implies f(x) > A - g(x)
+\end{equation*}
+
+por lo tanto tenemos que
+\begin{equation*}
+    0 < |x - a| < \delta \implies f(x) + g(x) > A
+\end{equation*}
+
+Por definición obtenemos que $\lim_{x \to a} (f(x) + g(x)) = +\infty$
+\end{proof}
+** Parte B
+\begin{proof}
+   Supongamos que $\lim_{x \to a} f(x) = +\infty$ y que existe delta tal que $0 < |x - a| < \delta_{g} \implies g(x) > c$, para algún c positivo. Sea $A > 0$ dado, entonces por hipótesis existe $\delta_{1}$
+    tal que
+
+    \begin{equation*}
+        0 < |x - a| < \delta_{1} \implies f(x) > \frac{A}{c}
+    \end{equation*}
+
+    Sea $\delta = \min \{\delta_{g}, \delta_{1}\}$
+    de este sigue que
+
+    \begin{equation*}
+        0 < |x - a| < \delta_{1} \leq \delta \implies f(x) > \frac{A}{c} \implies f(x)c > A
+    \end{equation*}
+    pues c es positivo
+
+    y tambien tenemos que $0 < |x - a| < \delta_{g} \leq \delta$ por lo que $g(x) > c$ entonces obtenemos
+    \begin{equation*}
+        0 < |x - a| < \delta \implies f(x)g(x) > f(x)c > A
+    \end{equation*}
+
+    Por definición $\lim_{x \to a} f(x)g(x) = +\infty$
+\end{proof}
+** Parte C
+\begin{proof}
+    Sea $g(x)$ una función tal que $\lim_{x \to a} g(x) = 0$ y existe un $\delta_{g} > 0$ tal que
+    si $|x - a| < \delta_{g} \implies g(x) > 0$, sea $f(x)$ una función tal que existe $\delta_{f}$
+    tal que si $|x - a| < \delta_{f} \implies f(x) > c > 0$, para algún $c$ positivo. Luego sea $A > 0$ dado. Sea $\delta = \min(\{\delta_{f}, \delta_{g}, \delta_{1}\})$ donde $\delta_{1}$ es aquel que cumple
+
+    \begin{equation*}
+        |x - a| < \delta_1 \implies |g(x) - 0| < \frac{c}{A}
+    \end{equation*}
+
+    el cual existe pues el límite de x tendiendo a $a$ de $g(x)$ es 0 y $c > 0$ al igual que $A > 0$. Luego notar que si $|x - a| < \delta_{g} \implies |g(x)| = g(x)$ pues g es positivo en esa vecindad de $a$.
+
+    De esto sigue que
+    \begin{equation*}
+        |x - a| < \delta \implies g(x) < \frac{c}{A} \implies \frac{1}{g(x)} > \frac{A}{c} \implies \frac{c}{g(x)} > A
+    \end{equation*}
+
+    pero
+    \begin{equation*}
+        |x - a| < \delta_f \leq \delta \implies f(x) > c
+    \end{equation*}
+
+    por lo tanto se sigue que
+    \begin{equation*}
+        |x - a| < \delta \implies \frac{f(x)}{g(x)} > \frac{c}{g(x)} > A
+    \end{equation*}
+
+    Por definición $\lim_{x \to a} \frac{f(x)}{g(x)} = +\infty$
+\end{proof}
+** Parte D
+\begin{proof}
+    Sea $g(x)$ una función tal que $\lim_{x \to a} g(x) = +\infty$ y sea $f(x)$ una función acotada en una vecindad de radio $\delta_{f}$ de $a$, es
+    decir que existe $M > 0$ tal que $0 < |x - a| < \delta_{f} \implies |f(x)| \leq M$. Sea $\varepsilon > 0$ dado, entonces
+    existe $\delta_{1}$ tal que
+    \begin{equation*}
+        0 < |x - a| < \delta_{1} \implies g(x) > \frac{M}{\varepsilon} > 0
+    \end{equation*}
+
+    dado que el límite de $g(x)$, $x$ tendiendo a $a$ es infinito y $\varepsilon$, $M$ son positivos. de esto sigue que $0 < |x - a| < \delta_{1} \implies g(x) = |g(x)|$
+
+    Sea $\delta = \min(\{\delta_{1}, \delta_{f}\})$ luego tenemos que
+    \begin{equation*}
+        0 < |x - a| < \delta \implies |g(x)| = g(x) > \frac{M}{\varepsilon} \implies |\frac{1}{g(x)}| < \frac{\varepsilon}{M} \implies |\frac{M}{g(x)}| < \varepsilon
+    \end{equation*}
+
+    pero dado que $0 < |x - a| < \delta_{f} \leq \delta \implies |f(x)| \leq M$ sigue que
+    \begin{equation*}
+        0 < |x - a| < \delta \implies |\frac{f(x)}{g(x)}| \leq |\frac{M}{g(x)}| < \varepsilon \implies |\frac{f(x)}{g(x)} - 0| < \varepsilon
+    \end{equation*}
+
+    Por definición $\lim_{x \to a} \frac{f(x)}{g(x)} = 0$
+\end{proof}
+* Pregunta 3
+\begin{proof}
+Sea $f, g : X \to \R$ funciones, se define $f \lor g : X \to \R$ y $f \land g : X \to \R$ tal que
+$(f \lor g)(x) = \max\{f(x), g(x)\}$ y $(f \land g)(x) = \min\{f(x), g(x)\}$, demostraremos que si
+$f$ y $g$ son continuas en $a$ entonces $f \lor g$ y $f \land g$ también lo son.
+
+Procederemos por casos, dado $\varepsilon > 0$, supongamos que $f(a) = g(a)$ luego $(f \lor g)(a) = f(a) = g(a)$ y
+$(f \land g)(a) = f(a) = g(a)$ dado que $f$ y $g$ son continuas en $a$ se tiene que existen $\delta_{1} > 0$ y
+$\delta_{2} > 0$ tal que
+
+\begin{align*}
+    |x - a| < \delta_1 &\implies |f(x) - f(a)| < \varepsilon\\
+    |x - a| < \delta_2 &\implies |g(x) - g(a)| < \varepsilon
+\end{align*}
+
+Tomemos $\delta = \min\{\delta_{1}, \delta_{2}\}$ luego sigue que
+\begin{align*}
+    |x - a| < \delta &\implies |(f \lor g)(x) - (f \lor g)(a)| < \varepsilon\\
+    |x - a| < \delta &\implies |(f \land g)(x) - (f \land g)(a)| < \varepsilon
+\end{align*}
+Pues $(f \land g)(x) = f(x)$ o $(f \land g)(x) = g(x)$ (respectivamente para la otra función) y
+$(f \land g)(a) = f(a) = g(a)$ (respectivamente para la otra función) por lo tanto se tienen las desigualdades
+pues $|f(x) - f(a)| < \varepsilon \land |g(x) - g(a)| < \varepsilon$ si $x$ esta en la vecindad de radio
+$\delta$. por lo tanto si $f(a) = g(a)$ las funciones son continuas en $a$, procederemos ahora con el
+siguiente caso.
+
+Supongamos, sin pérdida de generalidad, que $f(a) < g(a)$, luego $(f \lor g)(a) = g(a)$ y $(f \land g)(a) = f(a)$.
+Por teorema visto en clases y dado que $f$ y $g$ son continuas existe $\delta_{1}$ tal que se cumpla que
+\begin{equation*}
+    |x - a| < \delta_1 \implies f(x) < g(x)
+\end{equation*}
+
+dado que $f$ es continua en $a$ existe $\delta_{2}$ tal que
+\begin{equation*}
+    |x - a| < \delta_2 \implies |f(x) - f(a)| < \varepsilon
+\end{equation*}
+
+y dado que $g$ es continua en $a$ existe $\delta_{3}$ tal que
+\begin{equation*}
+    |x - a| < \delta_3 \implies |g(x) - g(a)| < \varepsilon
+\end{equation*}
+
+luego tomemos $\delta_{\lor} = \min\{\delta_{1}, \delta_{3}\}$ y $\delta_{\land} = \min\{\delta_{1}, \delta_{2}\}$
+
+de esto sigue que
+\begin{align*}
+    |x - a| < \delta_{\lor} \implies &|(f \lor g)(x) - (f \lor g)(a)| = |g(x) - g(a)| < \varepsilon\\
+    |x - a| < \delta_{\land} \implies &|(f \land g)(x) - (f \land g)(a)| = |f(x) - f(a)| < \varepsilon
+\end{align*}
+
+Por lo tanto las funciones $f \lor g$ y $f \land g$ son continuas en $a$ pues $\lim_{x \to a} (f \lor g)(x) = (f \lor g)(a)$ y $\lim_{x \to a} (f \land g)(x) = (f \land g)(a)$ por definición.
+\end{proof}
+
+* Pregunta 4
+** Parte A
+\begin{proof}
+    $(\implies)$ Sea $f : A \to \R$, $A \subset \R$ abierto y $f$ continua en $A$. Demostraremos que
+    $\{x \in A; f(x) < c\}$ y $\{x \in A; f(x) > c\}$ son abiertos para todo $c \in \R$.
+
+    Considere $a \in \{x \in A; f(x) < c\}$, dado que $f$ es continua en $A$ y en particular en $a$ tenemos
+    \begin{equation*}
+    \label{eq:cont}
+    \lim_{x \to a} f(x) = f(a) < c
+    \end{equation*}
+
+    Por lo tanto, por teorema visto en clases, existe un $\delta > 0$ tal que
+    \begin{equation*}
+        |x - a| < \delta \implies f(x) < c
+    \end{equation*}
+
+    De esto sigue que
+    \begin{equation*}
+        x \in (a - \delta, a + \delta) \iff |x - a| < \delta \implies f(x) < c \implies x \in \{x \in A; f(x) < c\}
+    \end{equation*}
+
+    Escrito de otra forma tenemos que $(a - \delta, a + \delta) \subset \{x \in A; f(x) < c\}$, por
+    definicion entonces $\{x \in A; f(x) < c\}$ abierto. El resultado para $\{x \in A; f(x) > c\}$ es
+    totalmente analogo.
+
+    $(\Longleftarrow)$ Procederemos por contradiccion. Sea $f : A \to \R$  una funcion de un conjunto
+    abierto en $\R$, luego tenemos que $\{x \in A; f(x) < c\}$ abierto y $\{x \in A; f(x) > c\}$, para
+    todo $c \in \R$ y que $f$ no es continua en $A$, por lo tanto existe un punto $a \in A$ donde
+    existe una vecindad de radio $\delta_{1}$ donde la funcion esta definida, pues $A$ es abierto tal que
+    \begin{equation}
+        \label{eq:neg}
+        \exists \varepsilon_{0} > 0, \forall \delta > 0, |x - a| < \delta \land |f(x) - f(a)| \geq \delta_{0}
+    \end{equation}
+
+    Considere los conjuntos
+    \begin{equation*}
+        \Omega_{1} = \{x \in A; f(x) < f(a) + \epsilon_{0}\} \qquad \Omega_{2} = \{x \in A; f(x) > f(a) - \epsilon_{0}\}
+    \end{equation*}
+
+    Donde $\varepsilon_{0}$ es el de (\ref{eq:neg}), Notar entonces que $a \in \Omega_{1}$ y $a \in \Omega_{2}$ pues $\varepsilon_{0} > 0$
+    Luego dado que $\Omega_{1}$ y $\Omega_{2}$ son abierto tenemos que existen vecindades centradas en
+    $a$ tal que
+    \begin{align*}
+        |x - a| < \delta_2 \implies x \in \Omega_1 = \{x \in A; f(x) < f(a) + \varepsilon_{0}\} &\implies f(x) < f(a) + \varepsilon_0 \implies f(x) - f(a) < \varepsilon_0\\
+        |x - a| < \delta_3 \implies x \in \Omega_2 = \{x \in A; f(x) > f(a) - \varepsilon_{0}\} &\implies f(x) > f(a) - \varepsilon_0 \implies -\varepsilon_0 < f(x) - f(a)
+    \end{align*}
+
+    Por transitividad entonces tenemos que
+    \begin{align*}
+        |x - a| < \delta_2 &\implies f(x) - f(a) < \varepsilon_0\\
+        |x - a| < \delta_3 &\implies -\varepsilon_0 < f(x) - f(a)
+    \end{align*}
+
+    Sea $\delta = \min(\{\delta_{1}, \delta_{2}, \delta_{3}\})$ se tienen todas las desigualdades anteriores
+    y que $f$ esta definida en la vecindad de radio $\delta$ de esto sigue que
+    \begin{equation*}
+        |x - a| < \delta \implies -\varepsilon_0 < f(x) - f(a) < \varepsilon_0 \implies |f(x) - f(a)| < \varepsilon_0
+    \end{equation*}
+    De (\ref{eq:neg}) sigue la contradiccion pues se supuso que para todo $\delta > 0, |x - a| < \delta \land |f(x) - f(a)| \geq \varepsilon_{0}$ pero nosotros demostramos que si $|x - a| < \delta \implies |f(x) - f(a)| < \varepsilon_{0}$, una contradiccion.
+\end{proof}
+** Parte B
+\begin{proof}
+    $(\implies)$ Sea $f : F \to \R$, $F \subset \R$ cerrado y $f$ continua en $F$. Demostraremos que
+    $\{x \in F; f(x) \leq c\}$ y $\{x \in F; f(x) \geq c\}$ son cerrados. Lo demostraremos usando la
+    caracterizacion de cerrados mediante sucesiones. Sea c arbitrario y $(x_{n})_{n \in \N} \subset \{x \in a; f(x) \leq c\}$ una sucesion arbitraria tal que $\lim_{n \to \infty} x_{n} = a$, demostraremos que $a \in \{x \in F; f(x) \leq c\}$. Luego dado que la funcion es continua tenemos lo siguiente.
+
+    \begin{equation*}
+        f(a) = \lim_{x \to a} f(x) = \lim_{n \to \infty} f(x_{n})
+    \end{equation*}
+
+    Pero por los teoremas de orden de limite, dado que
+    \begin{equation*}
+        x_{n} \in \{x \in F; f(x) \leq c\} \implies f(x_{n}) \leq c \implies \lim_{n \to \infty} f(x_{n}) \leq c
+    \end{equation*}
+
+    Por lo tanto tenemos que
+    \begin{equation*}
+        f(a) = \lim_{n \to \infty} f(x_{n}) \leq c
+    \end{equation*}
+
+    Por lo tanto $a \in \{x \in F; f(x) \leq c\}$ pues $f(a) \leq c$. Por caracterizacion de conjuntos cerrados, dado que toda sucesion convergente converge a un punto en el conjunto, el conjunto $\{x \in F; f(x) \leq c\}$ es cerrado. Analogamente para el otro conjunto.
+\end{proof}
