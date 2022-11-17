@@ -123,7 +123,7 @@ Por definición obtenemos que $\lim_{x \to a} (f(x) + g(x)) = +\infty$
     \end{equation*}
     pues c es positivo
 
-    y tambien tenemos que $0 < |x - a| < \delta_{g} \leq \delta$ por lo que $g(x) > c$ entonces obtenemos
+    y también tenemos que $0 < |x - a| < \delta_{g} \leq \delta$ por lo que $g(x) > c$ entonces obtenemos
     \begin{equation*}
         0 < |x - a| < \delta \implies f(x)g(x) > f(x)c > A
     \end{equation*}
@@ -168,7 +168,8 @@ Por definición obtenemos que $\lim_{x \to a} (f(x) + g(x)) = +\infty$
         0 < |x - a| < \delta_{1} \implies g(x) > \frac{M}{\varepsilon} > 0
     \end{equation*}
 
-    dado que el límite de $g(x)$, $x$ tendiendo a $a$ es infinito y $\varepsilon$, $M$ son positivos. de esto sigue que $0 < |x - a| < \delta_{1} \implies g(x) = |g(x)|$
+    dado que el límite de $g(x)$, $x$ tendiendo a $a$ es infinito y $\varepsilon$, $M$ son positivos.
+    De esto sigue que $0 < |x - a| < \delta_{1} \implies g(x) = |g(x)|$
 
     Sea $\delta = \min(\{\delta_{1}, \delta_{f}\})$ luego tenemos que
     \begin{equation*}
@@ -258,13 +259,13 @@ Por lo tanto las funciones $f \lor g$ y $f \land g$ son continuas en $a$ pues $\
     \end{equation*}
 
     Escrito de otra forma tenemos que $(a - \delta, a + \delta) \subset \{x \in A; f(x) < c\}$, por
-    definicion entonces $\{x \in A; f(x) < c\}$ abierto. El resultado para $\{x \in A; f(x) > c\}$ es
-    totalmente analogo.
+    definición entonces $\{x \in A; f(x) < c\}$ abierto. El resultado para $\{x \in A; f(x) > c\}$ es
+    totalmente análogo.
 
-    $(\Longleftarrow)$ Procederemos por contradiccion. Sea $f : A \to \R$  una funcion de un conjunto
+    $(\Longleftarrow)$ Procederemos por contradicción. Sea $f : A \to \R$ una función de un conjunto
     abierto en $\R$, luego tenemos que $\{x \in A; f(x) < c\}$ abierto y $\{x \in A; f(x) > c\}$, para
     todo $c \in \R$ y que $f$ no es continua en $A$, por lo tanto existe un punto $a \in A$ donde
-    existe una vecindad de radio $\delta_{1}$ donde la funcion esta definida, pues $A$ es abierto tal que
+    existe una vecindad de radio $\delta_{1}$ donde la función está definida, pues $A$ es abierto tal que
     \begin{equation}
         \label{eq:neg}
         \exists \varepsilon_{0} > 0, \forall \delta > 0, |x - a| < \delta \land |f(x) - f(a)| \geq \delta_{0}
@@ -275,7 +276,7 @@ Por lo tanto las funciones $f \lor g$ y $f \land g$ son continuas en $a$ pues $\
         \Omega_{1} = \{x \in A; f(x) < f(a) + \epsilon_{0}\} \qquad \Omega_{2} = \{x \in A; f(x) > f(a) - \epsilon_{0}\}
     \end{equation*}
 
-    Donde $\varepsilon_{0}$ es el de (\ref{eq:neg}), Notar entonces que $a \in \Omega_{1}$ y $a \in \Omega_{2}$ pues $\varepsilon_{0} > 0$
+    Donde $\varepsilon_{0}$ es el de (\ref{eq:neg}), notar entonces que $a \in \Omega_{1}$ y $a \in \Omega_{2}$ pues $\varepsilon_{0} > 0$.
     Luego dado que $\Omega_{1}$ y $\Omega_{2}$ son abierto tenemos que existen vecindades centradas en
     $a$ tal que
     \begin{align*}
@@ -290,23 +291,23 @@ Por lo tanto las funciones $f \lor g$ y $f \land g$ son continuas en $a$ pues $\
     \end{align*}
 
     Sea $\delta = \min(\{\delta_{1}, \delta_{2}, \delta_{3}\})$ se tienen todas las desigualdades anteriores
-    y que $f$ esta definida en la vecindad de radio $\delta$ de esto sigue que
+    y que $f$ está definida en la vecindad de radio $\delta$ de esto sigue que
     \begin{equation*}
         |x - a| < \delta \implies -\varepsilon_0 < f(x) - f(a) < \varepsilon_0 \implies |f(x) - f(a)| < \varepsilon_0
     \end{equation*}
-    De (\ref{eq:neg}) sigue la contradiccion pues se supuso que para todo $\delta > 0, |x - a| < \delta \land |f(x) - f(a)| \geq \varepsilon_{0}$ pero nosotros demostramos que si $|x - a| < \delta \implies |f(x) - f(a)| < \varepsilon_{0}$, una contradiccion.
+    De (\ref{eq:neg}) sigue la contradicción pues se supuso que para todo $\delta > 0, |x - a| < \delta \land |f(x) - f(a)| \geq \varepsilon_{0}$ pero nosotros demostramos que si $|x - a| < \delta \implies |f(x) - f(a)| < \varepsilon_{0}$, una contradicción.
 \end{proof}
 ** Parte B
 \begin{proof}
     $(\implies)$ Sea $f : F \to \R$, $F \subset \R$ cerrado y $f$ continua en $F$. Demostraremos que
     $\{x \in F; f(x) \leq c\}$ y $\{x \in F; f(x) \geq c\}$ son cerrados. Lo demostraremos usando la
-    caracterizacion de cerrados mediante sucesiones. Sea c arbitrario y $(x_{n})_{n \in \N} \subset \{x \in a; f(x) \leq c\}$ una sucesion arbitraria tal que $\lim_{n \to \infty} x_{n} = a$, demostraremos que $a \in \{x \in F; f(x) \leq c\}$. Luego dado que la funcion es continua tenemos lo siguiente.
+    caracterización de cerrados mediante sucesiones. Sea c arbitrario y $(x_{n})_{n \in \N} \subset \{x \in a; f(x) \leq c\}$ una sucesión arbitraria tal que $\lim_{n \to \infty} x_{n} = a$, demostraremos que $a \in \{x \in F; f(x) \leq c\}$. Luego dado que la función es continua tenemos lo siguiente.
 
     \begin{equation*}
         f(a) = \lim_{x \to a} f(x) = \lim_{n \to \infty} f(x_{n})
     \end{equation*}
 
-    Pero por los teoremas de orden de limite, dado que
+    Pero por los teoremas de orden de límite, dado que
     \begin{equation*}
         x_{n} \in \{x \in F; f(x) \leq c\} \implies f(x_{n}) \leq c \implies \lim_{n \to \infty} f(x_{n}) \leq c
     \end{equation*}
@@ -316,5 +317,5 @@ Por lo tanto las funciones $f \lor g$ y $f \land g$ son continuas en $a$ pues $\
         f(a) = \lim_{n \to \infty} f(x_{n}) \leq c
     \end{equation*}
 
-    Por lo tanto $a \in \{x \in F; f(x) \leq c\}$ pues $f(a) \leq c$. Por caracterizacion de conjuntos cerrados, dado que toda sucesion convergente converge a un punto en el conjunto, el conjunto $\{x \in F; f(x) \leq c\}$ es cerrado. Analogamente para el otro conjunto.
+    Por lo tanto $a \in \{x \in F; f(x) \leq c\}$ pues $f(a) \leq c$. Por caracterización de conjuntos cerrados, dado que toda sucesión convergente converge a un punto en el conjunto, el conjunto $\{x \in F; f(x) \leq c\}$ es cerrado. Análogamente para el otro conjunto.
 \end{proof}
