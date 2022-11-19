@@ -301,7 +301,8 @@ Por lo tanto las funciones $f \lor g$ y $f \land g$ son continuas en $a$ pues $\
 \begin{proof}
     $(\implies)$ Sea $f : F \to \R$, $F \subset \R$ cerrado y $f$ continua en $F$. Demostraremos que
     $\{x \in F; f(x) \leq c\}$ y $\{x \in F; f(x) \geq c\}$ son cerrados. Lo demostraremos usando la
-    caracterización de cerrados mediante sucesiones. Sea c arbitrario y $(x_{n})_{n \in \N} \subset \{x \in a; f(x) \leq c\}$ una sucesión arbitraria tal que $\lim_{n \to \infty} x_{n} = a$, demostraremos que $a \in \{x \in F; f(x) \leq c\}$. Luego dado que la función es continua tenemos lo siguiente.
+    caracterización de cerrados mediante sucesiones. Sea c arbitrario y $(x_{n})_{n \in \N} \subset \{x \in a; f(x) \leq c\}$ una sucesión arbitraria tal que $\lim_{n \to \infty} x_{n} = a$, demostraremos que $a \in \{x \in F; f(x) \leq c\}$. Notar que $a \in F$
+    pues $F$ es cerrado, por lo tanto $f(a)$ esta bien definido. Luego dado que la función es continua tenemos lo siguiente.
 
     \begin{equation*}
         f(a) = \lim_{x \to a} f(x) = \lim_{n \to \infty} f(x_{n})
@@ -318,4 +319,23 @@ Por lo tanto las funciones $f \lor g$ y $f \land g$ son continuas en $a$ pues $\
     \end{equation*}
 
     Por lo tanto $a \in \{x \in F; f(x) \leq c\}$ pues $f(a) \leq c$. Por caracterización de conjuntos cerrados, dado que toda sucesión convergente converge a un punto en el conjunto, el conjunto $\{x \in F; f(x) \leq c\}$ es cerrado. Análogamente para el otro conjunto.
+
+    $(\Longleftarrow)$ Procederemos por contradiccion, Suponga que $f: F \to \R$ tal que $F$ es cerrado y $f$ es no continua, Suponga tambien que $\{x \in F; f(x) \geq c\}$ es cerrado para todo $c \in \R$ al igual que
+    $\{x \in F; f(x) \leq c\}$. Luego dado que $f$ es no continua en $F$ tenemos que existe $a \in F$ tal que lo siguiente se cumpla
+
+    \begin{equation}
+        \exists \varepsilon_{0} > 0, \forall \delta > 0, |x - a| < \delta \land |f(x) - f(a)| \geq \delta_{0}
+    \end{equation}
+
+    Definimos la siguiente sucesion, $x_{n} = x$ tal que $|x - a| < \frac{1}{n} \land |f(x) - f(a)| \geq \varepsilon_{0}$, estos $x$ existen pues $f$ es no continua.
+    Notemos que $(x_{n})_{n \in \N} \to a$. Por la construccion de esta sucesion tenemos que $f(x_{n}) \geq f(a) + \varepsilon_{0}$ o $f(x_{n}) \leq f(a) - \varepsilon_{0}$. Por lo se cumple que existe una subsucesion $x_{n_{k}}$ tal que $f(x_{n_{k}}) \geq f(a) + \varepsilon_{0}$ o (no excluyente) existe
+    una subsucesion $(x_{n_{k}})$ tal que $f(x_{n_{k}}) \leq f(a) - \varepsilon_{0}$.
+
+    Supongamos lo primero es decir, existe $(x_{n_{k}})$ tal que $f(x_{n_{k}}) \geq f(a) + \varepsilon_{0}$
+    Luego notemos que $x_{n_{k}} \in \{x \in F; f(x) \geq f(a) + \varepsilon_{0}\}$ por hipotesis este conjunto
+    es cerrado y notar que $a \notin \{x \in F; f(x) \geq f(a) + \varepsilon_{0}\}$ pues $\varepsilon_{0}$
+    es positivo. Pero $(x_{n_{k}}) \subset \{x \in F; f(x) \geq f(a) + \varepsilon_{0}\}$ y $(x_{n_{k}}) \to a$ pues es una subsucesion de la sucesion inicial. Pero $\{x \in F; f(x) \geq f(a) + \varepsilon_{0}\}$ es cerrado por hipotesis y $(x_{n_{k}})$ es una sucesion convergente en este por lo
+    tanto su limite esta en $\{x \in F; f(x) \geq f(a) + \varepsilon_{0}\}$ pero esta converge a $a$. Por lo tanto una contradiccion pues $x \in \{x \in F; f(x) \geq f(a) + \varepsilon_{0}\} \land x \notin \{x \in F; f(x) \geq f(a) + \varepsilon_{0}\}$. El otro caso es totalmente analogo solamente que consideramos $\{x \in F; f(x) \leq f(a) - \varepsilon_{0}\}$.
+
+    De esto sigue la contradiccion pues no puede pasar ninguno de los 2 casos.
 \end{proof}
